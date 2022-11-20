@@ -1,4 +1,4 @@
-package com.e444er.feature_home
+package com.e444er.featurehome
 
 import org.junit.Test
 

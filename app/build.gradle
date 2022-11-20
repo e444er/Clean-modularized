@@ -32,10 +32,18 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
-    dynamicFeatures = [':featurehome', ':favoritefeature']
+    dynamicFeatures = []
 }
 
 dependencies {
+
+    implementation Navigation.dynamic
+
+    implementation Navigation.navFra
+    implementation Navigation.navRuntime
+    implementation Navigation.navUi
+
+    implementation Glide.glide
 
     implementation Deps.core
     implementation Deps.appCompat
@@ -47,6 +55,6 @@ dependencies {
 
     implementation LottieAnimations.lottieAnimations
 
-    implementation Room.room
-    kapt Room.roomCompiler
+    implementation Koin.koin
+
 }
