@@ -32,10 +32,15 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
-    dynamicFeatures = []
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {
+
+    implementation project(":home-feature")
+    implementation project(":favorite-feature")
 
     implementation Navigation.dynamic
 
