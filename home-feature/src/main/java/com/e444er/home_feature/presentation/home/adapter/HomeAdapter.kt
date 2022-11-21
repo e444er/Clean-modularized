@@ -1,6 +1,5 @@
 package com.e444er.home_feature.presentation.home.adapter
 
-import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
@@ -8,15 +7,21 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.e444er.domain.model.MovieListDomainModel
-import com.e444er.home_feature.R
 import com.e444er.home_feature.databinding.ItemLayoutBinding
 
-class HomeAdapter: RecyclerView.Adapter<HomeAdapter.MyViewHolder>() {
+class HomeAdapter : RecyclerView.Adapter<HomeAdapter.MyViewHolder>() {
 
-    class MyViewHolder(val binding: ItemLayoutBinding) :
+    private var list = listOf<MovieListDomainModel>()
+
+    fun setData(list: List<MovieListDomainModel>) {
+        this.list = list
+        notifyItemInserted(this.list.lastIndex)
+    }
+
+    inner class MyViewHolder(val binding: ItemLayoutBinding) :
         RecyclerView.ViewHolder(binding.root)
 
-    private class DifferCallback : DiffUtil.ItemCallback<MovieListDomainModel>(){
+    private class DifferCallback : DiffUtil.ItemCallback<MovieListDomainModel>() {
         override fun areItemsTheSame(
             oldItem: MovieListDomainModel,
             newItem: MovieListDomainModel
@@ -32,7 +37,7 @@ class HomeAdapter: RecyclerView.Adapter<HomeAdapter.MyViewHolder>() {
         }
     }
 
-    val differ = AsyncListDiffer<MovieListDomainModel>(this, DifferCallback())
+    val differ = AsyncListDiffer(this, DifferCallback())
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         return MyViewHolder(
@@ -43,13 +48,11 @@ class HomeAdapter: RecyclerView.Adapter<HomeAdapter.MyViewHolder>() {
         )
     }
 
-    @SuppressLint("PrivateResource")
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-       val movieId = differ.currentList[position]
+        val movieId = differ.currentList[position]
         holder.binding.apply {
             Glide.with(root)
-                .load(movieId.posterPath)
-                .error(com.google.android.material.R.drawable.ic_mtrl_checked_circle)
+                .load(IMAGE_URSL + movieId?.poster_path)
                 .centerCrop()
                 .into(imagePoster)
             textTitle.text = movieId.title
@@ -60,5 +63,11 @@ class HomeAdapter: RecyclerView.Adapter<HomeAdapter.MyViewHolder>() {
 
     override fun getItemCount(): Int {
         return differ.currentList.size
+    }
+
+    companion object {
+        const val IMAGE_URL = "https://www.themoviedb.org/t/p/w300"
+        const val IMAGE_URSL = "https://image.tmdb.org/t/p/w300/"
+
     }
 }

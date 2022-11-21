@@ -1,5 +1,6 @@
 package com.e444er.domain.usecase
 
+import android.util.Log
 import com.e444er.domain.Resource
 import com.e444er.domain.model.MovieListDomainModel
 import com.e444er.domain.repository.MoviesRepository
@@ -9,30 +10,26 @@ import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
 interface GetMovieUseCase : KoinComponent {
+
     val moviesRepository: MoviesRepository
 
-    suspend operator fun invoke(
-        list: String,
-        page: Int? = null
-    ): Flow<Resource<List<MovieListDomainModel>>>
+    operator fun invoke(): Flow<Resource<List<MovieListDomainModel>>>
 }
 
 class GetMovieUseCaseImpl : GetMovieUseCase {
     override val moviesRepository: MoviesRepository by inject();
 
-    override suspend fun invoke(
-        list: String,
-        page: Int?
-    ): Flow<Resource<List<MovieListDomainModel>>> {
+    override fun invoke(): Flow<Resource<List<MovieListDomainModel>>> {
         return flow {
             try {
                 emit(Resource.Loading())
-                val movie = moviesRepository.getMovieList(list, page).results.orEmpty()
-                emit(Resource.Success(movie))
+                val data  = moviesRepository.getMovieList()
+                Log.d("Tagg", "$data")
+                emit(Resource.Success(data ))
             } catch (e: Exception) {
                 emit(Resource.Error(message = e.localizedMessage ?: "ERROR"))
             }
-
         }
     }
+
 }

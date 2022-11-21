@@ -7,7 +7,7 @@ import com.e444er.domain.model.TmdbApiResponseDomain
 
 fun MovieListResponse.toDomain(): MovieListDomainModel {
     return MovieListDomainModel(
-        character, id, job, overview, posterPath, releaseDate, title, voteAverage
+        character, id, job, overview, poster_path, releaseDate, title, voteAverage
     )
 }
 

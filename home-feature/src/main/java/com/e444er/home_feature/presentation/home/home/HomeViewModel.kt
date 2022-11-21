@@ -5,12 +5,11 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.e444er.domain.Resource
 import com.e444er.domain.model.MovieListDomainModel
+import com.e444er.domain.model.TmdbApiResponseDomain
 import com.e444er.domain.usecase.GetMovieUseCase
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 
 class HomeViewModel(
@@ -25,19 +24,16 @@ class HomeViewModel(
     val moviesListStateFlow: StateFlow<HomeState> = _moviesListStateFlow.asStateFlow()
 
 
-    fun getMovies(list: String) {
+    fun getMovies() {
         viewModelScope.launch(Dispatchers.IO) {
-            getMovieUseCase(
-                list = list,
-                page = 1
-            ).collect { result ->
+            getMovieUseCase().collect { result ->
                 when (result) {
                     is Resource.Success -> {
-                        _moviesListStateFlow.value = HomeState(data = result.data)
+                        _moviesListStateFlow.value = HomeState(data = result.data ?: emptyList())
                     }
                     is Resource.Error -> {
                         _moviesListStateFlow.value = HomeState(
-                            error = result.message ?: "An unexpected error occurred"
+                            error = result.message ?: "An unexpected error"
                         )
                     }
                     is Resource.Loading -> {
@@ -47,12 +43,29 @@ class HomeViewModel(
             }
         }
     }
+
+//    fun getMovies() {
+//        getMovieUseCase.invoke().onEach {
+//            when (it) {
+//                is Resource.Loading -> {
+//                    _moviesListStateFlow.value = HomeState(isLoading = true)
+//                }
+//                is Resource.Error -> {
+//                    _moviesListStateFlow.value =
+//                        HomeState(error = it.message ?: "An unexpected error occurred")
+//                }
+//                is Resource.Success -> {
+//                    _moviesListStateFlow.value = HomeState(data = it.data)
+//                }
+//            }
+//        }.launchIn(viewModelScope)
+//    }
 }
 
 
 class HomeState(
     val isLoading: Boolean = false,
-    val data: List<MovieListDomainModel>? = null,
-    val error: String = ""
+    val error: String = "",
+    val data: List<MovieListDomainModel>? = emptyList()
 )
 
