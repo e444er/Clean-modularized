@@ -41,6 +41,8 @@ dependencies {
 
     implementation project(":home-feature")
     implementation project(":favorite-feature")
+    implementation project(":libraries:domain")
+    implementation project(":libraries:data-api")
 
     implementation Navigation.dynamic
 

@@ -33,6 +33,8 @@ android {
 
 dependencies {
 
+    implementation project(":libraries:domain")
+
     implementation Retrofit.retrofit
     implementation Retrofit.okHttp
     implementation Retrofit.okhttpLogging

@@ -14,7 +14,6 @@ dependencyResolutionManagement {
 }
 rootProject.name = "Clean-modularized"
 include ':app'
-include ':libraries:data'
 include ':libraries:core'
 include ':libraries:domain'
 include ':libraries:data-api'
