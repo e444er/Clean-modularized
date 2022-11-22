@@ -54,10 +54,10 @@ class HomeAdapter : RecyclerView.Adapter<HomeAdapter.MyViewHolder>() {
             Glide.with(root)
                 .load(IMAGE_URSL + movieId?.poster_path)
                 .centerCrop()
-                .into(imagePoster)
-            textTitle.text = movieId.title
-            textVoteCount.text = movieId.voteAverage.toString()
-            textDuration.text = movieId.releaseDate
+                .into(imagePopular)
+            textPopularTitle.text = movieId.title
+            textPopularRating.text = movieId.voteAverage.toString()
+            textPopularYear.text = movieId.releaseDate
         }
     }
 
