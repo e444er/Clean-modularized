@@ -1,10 +1,10 @@
 # Clean-modularized
 ![Android Build](https://github.com/Ezike/Baking-App-Kotlin/workflows/Android%20Build/badge.svg) [![coroutines](https://img.shields.io/badge/Kotlin-Coroutines-orange)](https://developer.android.com/kotlin/coroutines)
 
-
 ## Stack
 * Feature Module
 * Modularization
+* Navigation multi-module
 * Clean Architecture
 * MVVM
 * Koin
