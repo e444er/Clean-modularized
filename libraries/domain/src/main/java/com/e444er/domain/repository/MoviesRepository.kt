@@ -8,5 +8,6 @@ interface MoviesRepository {
 
     suspend fun getMovieList(): List<MovieListDomainModel>
 
-    suspend fun getMovieDetail(): Flow<TmdbApiResponseDomain>
+    suspend fun getSearch(name: String): List<MovieListDomainModel>
+
 }

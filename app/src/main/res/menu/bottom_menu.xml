@@ -7,6 +7,6 @@
         android:title="Home"/>
     <item
         android:id="@+id/favorite_nav"
-        android:icon="@drawable/ic_favorite"
-        android:title="Favorite"/>
+        android:icon="@drawable/ic_search"
+        android:title="Search"/>
 </menu>

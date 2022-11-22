@@ -23,7 +23,6 @@ class HomeViewModel(
     private val _moviesListStateFlow = MutableStateFlow(HomeState())
     val moviesListStateFlow: StateFlow<HomeState> = _moviesListStateFlow.asStateFlow()
 
-
     fun getMovies() {
         viewModelScope.launch(Dispatchers.IO) {
             getMovieUseCase().collect { result ->

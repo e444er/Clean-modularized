@@ -18,4 +18,10 @@ interface MovieService {
     suspend fun fetchMovieList(
         @Query("page") page: Int? = null
     ): TmdbApiResponse
+
+
+    @GET("search/movie?api_key=271236134afbbdcd24c3caaaab027824&language=ru-RU")
+    suspend fun searchMovie(
+        @Query("query") query: String
+    ): TmdbApiResponse
 }

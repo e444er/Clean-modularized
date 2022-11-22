@@ -28,31 +28,13 @@ class HomeFragment : Fragment(R.layout.home_fragment) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.movieRv.adapter = mAdapter
+        binding.movieRv.apply {
+            adapter = mAdapter
+            setHasFixedSize(true)
+        }
         viewModel.getMovies()
         getMovie()
     }
-
-//    private fun getMovie() {
-//        lifecycleScope.launchWhenCreated {
-//            viewModel.moviesListStateFlow.collect { it ->
-//                if (it.isLoading) {
-//                    binding.progressBar.isVisible = true
-//                    binding.movieRv.isVisible = false
-//                }
-//                if (it.error.isNotBlank()) {
-//                    binding.progressBar.isVisible = false
-//                    binding.movieRv.isVisible = false
-//                    Toast.makeText(requireContext(), "$it", Toast.LENGTH_SHORT).show()
-//                }
-//                it.data?.let {
-//                    binding.progressBar.isVisible = false
-//                    binding.movieRv.isVisible = true
-//                    _adapter.differ.submitList(it)
-//                }
-//            }
-//        }
-//    }
 
     private fun getMovie() {
         lifecycleScope.launchWhenStarted {

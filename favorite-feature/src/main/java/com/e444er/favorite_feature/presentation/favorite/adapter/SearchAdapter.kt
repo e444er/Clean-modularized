@@ -1,4 +1,4 @@
-package com.e444er.home_feature.presentation.home.adapter
+package com.e444er.favorite_feature.presentation.favorite.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -8,12 +8,12 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.e444er.domain.model.MovieListDomainModel
-import com.e444er.home_feature.databinding.ItemLayoutBinding
-import com.e444er.home_feature.presentation.home.home.HomeFragmentDirections
+import com.e444er.favorite_feature.databinding.SearchItemBinding
+import com.e444er.favorite_feature.presentation.favorite.search.SearchFragmentDirections
 
-class HomeAdapter : RecyclerView.Adapter<HomeAdapter.MyViewHolder>() {
+class SearchAdapter : RecyclerView.Adapter<SearchAdapter.SearchHolder>() {
 
-    inner class MyViewHolder(val binding: ItemLayoutBinding) :
+    inner class SearchHolder(val binding: SearchItemBinding) :
         RecyclerView.ViewHolder(binding.root)
 
     private class DifferCallback : DiffUtil.ItemCallback<MovieListDomainModel>() {
@@ -34,16 +34,16 @@ class HomeAdapter : RecyclerView.Adapter<HomeAdapter.MyViewHolder>() {
 
     val differ = AsyncListDiffer(this, DifferCallback())
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        return MyViewHolder(
-            ItemLayoutBinding.inflate(
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchHolder {
+        return SearchHolder(
+            SearchItemBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent, false
             )
         )
     }
 
-    override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: SearchHolder, position: Int) {
         val movieId = differ.currentList[position]
         holder.binding.apply {
             Glide.with(root)
@@ -56,7 +56,8 @@ class HomeAdapter : RecyclerView.Adapter<HomeAdapter.MyViewHolder>() {
         }
         holder.binding.root.setOnClickListener {
             if (movieId != null) {
-                val action = HomeFragmentDirections.actionHomeFragmentToDetailFragment(movieId)
+                val action =
+                    SearchFragmentDirections.actionFavoriteFragmentToDetailSearchFragment(movieId)
                 holder.itemView.findNavController().navigate(action)
             }
         }

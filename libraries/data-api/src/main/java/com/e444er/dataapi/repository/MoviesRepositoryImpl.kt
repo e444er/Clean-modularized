@@ -22,9 +22,10 @@ class MoviesRepositoryImpl() : MoviesRepository, KoinComponent {
         }
     }
 
-    override suspend fun getMovieDetail(): Flow<TmdbApiResponseDomain> {
-        TODO("Not yet implemented")
+    override suspend fun getSearch(name: String):  List<MovieListDomainModel> {
+        return apiService.searchMovie(name).results.map { it.toDomain() }
     }
+
 
 }
 
