@@ -12,7 +12,7 @@
 
 
 ### Screenshots
-<img src="https://github.com/e444er/Clean-modularized/blob/master/screen/s1.png" width="200" /> <img src="https://github.com/e444er/Clean-modularized/blob/master/screen/s2.png" width="200" /> 
+<img src="https://github.com/e444er/Clean-modularized/blob/master/screen/s1.png" width="200" />   <img src="https://github.com/e444er/Clean-modularized/blob/master/screen/s2.png" width="200" /> 
 
 
 
