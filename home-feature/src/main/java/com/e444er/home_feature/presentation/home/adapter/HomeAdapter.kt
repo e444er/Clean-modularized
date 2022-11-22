@@ -2,12 +2,14 @@ package com.e444er.home_feature.presentation.home.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.e444er.domain.model.MovieListDomainModel
 import com.e444er.home_feature.databinding.ItemLayoutBinding
+import com.e444er.home_feature.presentation.home.home.HomeFragmentDirections
 
 class HomeAdapter : RecyclerView.Adapter<HomeAdapter.MyViewHolder>() {
 
@@ -58,6 +60,12 @@ class HomeAdapter : RecyclerView.Adapter<HomeAdapter.MyViewHolder>() {
             textPopularTitle.text = movieId.title
             textPopularRating.text = movieId.voteAverage.toString()
             textPopularYear.text = movieId.releaseDate
+        }
+        holder.binding.root.setOnClickListener {
+            if (movieId != null) {
+                val action = HomeFragmentDirections.actionHomeFragmentToDetailFragment(movieId)
+                holder.itemView.findNavController().navigate(action)
+            }
         }
     }
 
