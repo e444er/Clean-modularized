@@ -1,0 +1,26 @@
+# Clean-modularized
+![Android Build](https://github.com/Ezike/Baking-App-Kotlin/workflows/Android%20Build/badge.svg) [![coroutines](https://img.shields.io/badge/Kotlin-Coroutines-orange)](https://developer.android.com/kotlin/coroutines)
+
+
+## Features
+* Feature Module and Clean Architecture with MVVM 
+* Kotlin Coroutines with Flow (State Flow)
+* Jetpack
+* Retrofit
+* Glide
+* Koin
+
+
+### Screenshots
+<img src="https://github.com/e444er/MovieApp/blob/master/app/src/main/res/drawable/s1.jpg" width="200" /> <img src="https://github.com/e444er/MovieApp/blob/master/app/src/main/res/drawable/s2.jpg" width="200" /> 
+<img src="https://github.com/e444er/MovieApp/blob/master/app/src/main/res/drawable/s3.jpg" width="200" />
+<img src="https://github.com/e444er/MovieApp/blob/master/app/src/main/res/drawable/s4.jpg" width="200" /> 
+
+## Libraries
+*   [Flow](https://github.com/androidbroadcast/ViewBindingPropertyDelegate)
+*   [Coroutines](https://github.com/Kotlin/kotlinx.coroutines)
+*   [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel)
+*   [Navigation](https://github.com/topics/android-navigation-component)
+*   [Glide](https://github.com/bumptech/glide)
+*   [Retrofit](https://square.github.io/retrofit/)
+*   [Koin](https://dagger.dev/hilt)
