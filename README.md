@@ -2,11 +2,18 @@
 ![Android Build](https://github.com/Ezike/Baking-App-Kotlin/workflows/Android%20Build/badge.svg) [![coroutines](https://img.shields.io/badge/Kotlin-Coroutines-orange)](https://developer.android.com/kotlin/coroutines)
 
 
-## Features
-* Feature Module and Clean Architecture with MVVM 
-* Kotlin Coroutines with Flow (State Flow)
-* Jetpack
+## Stack
+* Feature Module
+* Modularization
+* Clean Architecture
+* MVVM
+* Koin
+* Navigation
+* Coroutines
+* Flow
+* ViewBinding
 * Retrofit
+* Gson
 * Glide
 * Koin
 
