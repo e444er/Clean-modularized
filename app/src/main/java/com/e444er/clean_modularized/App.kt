@@ -3,6 +3,7 @@ package com.e444er.clean_modularized
 import android.app.Application
 import com.e444er.dataapi.di.apiModule
 import com.e444er.dataapi.di.networkModule
+import com.e444er.dataapi.di.roomModule
 import com.e444er.domain.di.domainModule
 import com.e444er.favorite_feature.presentation.favorite.searchModule
 import com.e444er.home_feature.presentation.home.di.homeModule
@@ -22,7 +23,8 @@ class App: Application() {
                 networkModule,
                 homeModule,
                 domainModule,
-                searchModule
+                searchModule,
+                roomModule
             )
         }
     }

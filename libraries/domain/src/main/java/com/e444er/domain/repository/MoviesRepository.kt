@@ -10,4 +10,12 @@ interface MoviesRepository {
 
     suspend fun getSearch(name: String): List<MovieListDomainModel>
 
+    fun getNotes(): Flow<MovieListDomainModel>
+
+    suspend fun getNoteById(id: Int): MovieListDomainModel?
+
+    suspend fun insertNote(movie: MovieListDomainModel)
+
+    suspend fun deleteNote(movie: MovieListDomainModel)
+
 }
